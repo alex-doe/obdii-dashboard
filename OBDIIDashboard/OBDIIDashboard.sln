@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBDIIDashboard", "OBDIIDashboard\OBDIIDashboard.csproj", "{7D973735-29AC-469A-82F7-91FB642E9DE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ODBIIDashboard.Core", "ODBIIDashboard.Core\ODBIIDashboard.Core.csproj", "{8241B7E8-964E-4BF5-9772-F2AF73A67CAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ODBII.Simulator", "ODBII.Simulator\ODBII.Simulator.csproj", "{021EB2FA-0669-4486-88F7-AE443E424504}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D973735-29AC-469A-82F7-91FB642E9DE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D973735-29AC-469A-82F7-91FB642E9DE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D973735-29AC-469A-82F7-91FB642E9DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D973735-29AC-469A-82F7-91FB642E9DE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8241B7E8-964E-4BF5-9772-F2AF73A67CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8241B7E8-964E-4BF5-9772-F2AF73A67CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8241B7E8-964E-4BF5-9772-F2AF73A67CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8241B7E8-964E-4BF5-9772-F2AF73A67CAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{021EB2FA-0669-4486-88F7-AE443E424504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{021EB2FA-0669-4486-88F7-AE443E424504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{021EB2FA-0669-4486-88F7-AE443E424504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{021EB2FA-0669-4486-88F7-AE443E424504}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

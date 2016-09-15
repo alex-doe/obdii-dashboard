@@ -1,0 +1,69 @@
+﻿<Window x:Class="ODBII.Simulator.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ViewModel="clr-namespace:ODBII.Simulator.ViewModel"
+    xmlns:Extensions="clr-namespace:ODBII.Simulator.Extensions"
+    Title="MainWindow" Height="600" Width="550">
+    <Window.DataContext>
+        <ViewModel:MainViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <Extensions:InvertBoolConverter x:Key="invertBoolConverter"/>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <GroupBox Header="Settings">
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox SelectedItem="Comports"
+                              Width="100"
+                              VerticalContentAlignment="Center"
+                              ItemsSource="{Binding AvailableComPorts}"
+                              SelectedValue="{Binding SelectedComPort}" />
+                    <Button Margin="5,0"
+                            Padding="5,0"
+                            Width="100">Search Ports</Button>
+                    <Button Margin="5,0"
+                            Padding="5,0"
+                            Width="100"
+                            Command="{Binding ConnectComPortCommmand}"
+                            IsEnabled="{Binding Connected,Converter={StaticResource invertBoolConverter}}">Connect</Button>
+                    <Button Margin="5,0"
+                            Padding="5,0"
+                            Width="100"
+                            Command="{Binding DisconnectComPortCommmand}"
+                            IsEnabled="{Binding Connected}">Disconnect</Button>
+                    <Label Content="{Binding ComStatus}" />
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Simulator">
+                <StackPanel HorizontalAlignment="Center">
+                    <Label HorizontalContentAlignment="Center" Content="{Binding SimStatus}"></Label>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Width="200" Margin="10,0" Command="{Binding StartComSimulator}" IsEnabled="{Binding SimStarted,Converter={StaticResource invertBoolConverter}}">Start</Button>
+                        <Button Width="200" Margin="10,0" Command="{Binding StopSimulatorCommand}" IsEnabled="{Binding SimStarted}">Stop</Button>
+                    </StackPanel>
+                    <DataGrid
+                        AutoGenerateColumns="True"
+                        ItemsSource="{Binding LogGridItems}"
+                        MaxHeight="200" Height="200"
+                        Margin="0,5"
+                        SelectionUnit="FullRow"
+                        SelectionMode="Single"
+                        >
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderThickness" Value="0" />
+                            </Style>
+                        </DataGrid.CellStyle>
+                    </DataGrid>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="WriteToPort">
+                <StackPanel>
+                    <TextBox Text="{Binding TextToSend}" />
+                    <Button Command="{Binding SendToPortPressed}" IsEnabled="{Binding Connected}">SendToPort</Button>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>

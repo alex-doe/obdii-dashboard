@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="OBDIIDashboard.Controls.SensorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ViewModel="clr-namespace:OBDIIDashboard.ViewModel"
+             xmlns:Extensions="clr-namespace:OBDIIDashboard.Extensions"
+             mc:Ignorable="d"
+             d:DesignHeight="200" d:DesignWidth="200" Background="LightGray" Margin="10">
+    <UserControl.DataContext>
+        <ViewModel:SensorViewModel></ViewModel:SensorViewModel>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <Extensions:MyBooleanToVisibilityConverter x:Key="boolToVis" />
+    </UserControl.Resources>
+    <UserControl.Visibility>
+        <Binding Path="Visible" Converter="{StaticResource boolToVis}"></Binding>
+    </UserControl.Visibility>
+    <StackPanel Width="200">
+        <StackPanel Orientation="Horizontal">
+            <Label x:Name="_sensorTitle" Content="{Binding Title}" Height="25" Width="175"></Label>
+            <Button x:Name="_removeSensor" Width="25" BorderBrush="{x:Null}" Click="_removeSensor_OnClick" Foreground="Red">X</Button>
+        </StackPanel>
+        <Border x:Name="_sensorData" Height="140">
+            <Border.Background>GreenYellow</Border.Background>
+            <Label x:Name="_sensorResult" Content="{Binding Result}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        </Border>
+        <Button x:Name="_sensorStart" Click="_sensorStart_OnClick" Height="35" BorderBrush="{x:Null}" Content="Start">
+            <Button.Visibility>
+                <Binding Path="Running" Converter="{StaticResource boolToVis}" ConverterParameter="false"></Binding>
+            </Button.Visibility>
+        </Button>
+        <Button x:Name="_sensorStop" Click="_sensorStop_OnClick" Height="35" BorderBrush="{x:Null}" Content="Stop">
+            <Button.Visibility>
+                <Binding Path="Running" Converter="{StaticResource boolToVis}" ConverterParameter="true"></Binding>
+            </Button.Visibility>
+        </Button>
+    </StackPanel>
+</UserControl>
